@@ -28,6 +28,24 @@
   color: #61dafb;
 }
 
+.selection {
+  background: white;
+  transition: 0.5s;
+}
+
+.right-selection {
+  background: green;
+}
+
+.wrong-selection {
+  background: red;
+}
+
+.center-label {
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
