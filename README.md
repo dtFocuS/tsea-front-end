@@ -20,25 +20,20 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### Accptance Criteria
-- A user can view questions.
-- Questions with their multiple choice options much be displayed one at a time.
-- Questions should not repeat in a round.
-- A user can select only 1 answer out of the 4 possible answers.
+- A user can view questions
+- Questions with their multiple choice options much be displayed one at a time
+- Questions should not repeat in a round
+- A user can select only 1 answer out of the 4 possible answers
 - The correct answer must be revealed after a user has submitted their answer
-- A user can see the score they received at the end of the round.
+- A user can see the score they received at the end of the round
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Instruction to run the app
+1. Clone this git repo to your local machine.
+2. Cd into the directory and run npm install.
+3. Run npm start in your terminal to run the app.
 
 ### `npm run eject`
 
