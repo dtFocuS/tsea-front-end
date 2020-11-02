@@ -9,14 +9,14 @@ const initState = {
     questionIndex: 0,
     correct: 0,
 }
-
+const trivias = triviaQuestions;
 class Home extends React.Component {
     
     constructor() {
         super();
         this.state={
             ...initState,
-            triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
+            triviaQuestions: trivias.map((a) => ({sort: Math.random(), value: a}))
             .sort((a, b) => a.sort - b.sort)
             .map((a) => a.value).slice(0, 10),
             personalBest: 0,
@@ -26,17 +26,13 @@ class Home extends React.Component {
     componentDidMount() {
         if (this.state.triviaQuestions) {
             //add the correct answer with the incorrect answers to the same array and shuffle the order of the array
-            for (let item of this.state.triviaQuestions) {
-                item["selections"] = [...item.incorrect, item.correct].map((a) => ({sort: Math.random(), value: a}))
-                .sort((a, b) => a.sort - b.sort)
-                .map((a) => a.value)
-            }
+            this.getRandomSelections();
         }
-        
         if (this.props.location.state) {
           this.setState({userName: this.props.location.state.userName})
         } 
     }
+
     //increment the correct count if the selected option is the correct answer
     selectAnswer = (selection, question) => {
         this.setState({selectedAnswer: selection}, () => {
@@ -56,17 +52,23 @@ class Home extends React.Component {
     playAgain = () => {
         this.setState(prevState => ({
             personalBest: prevState.personalBest > prevState.correct ? prevState.personalBest : prevState.correct,
-            triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
+            triviaQuestions: trivias.map((a) => ({sort: Math.random(), value: a}))
             .sort((a, b) => a.sort - b.sort)
             .map((a) => a.value).slice(0, 10),
             ...initState,
         }), () => {
-            for (let item of this.state.triviaQuestions) {
+            this.getRandomSelections();
+        }) 
+    }
+
+    getRandomSelections = () => {
+        let temp = this.state.triviaQuestions;
+            for (let item of temp) {
                 item["selections"] = [...item.incorrect, item.correct].map((a) => ({sort: Math.random(), value: a}))
                 .sort((a, b) => a.sort - b.sort)
                 .map((a) => a.value)
             }
-        }) 
+        this.setState({triviaQuestions: temp})
     }
 
     render() {
