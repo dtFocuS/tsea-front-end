@@ -9,11 +9,11 @@ class LandingPage extends React.Component {
             userName: "",
         }
     }
-
+    //set username as input value
     handleChange=(e) => {
-        this.setState({userName: e.target.value}, ()=> console.log(this.state.userName));
+        this.setState({userName: e.target.value});
     }
-
+    //proceed to home page if username is entered
     handleEnter = () => {
         if (this.state.userName.replace(/\s+/g, '') !== "") {
             this.props.history.push("/home", {

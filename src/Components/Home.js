@@ -25,6 +25,7 @@ class Home extends React.Component {
 
     componentDidMount() {
         if (this.state.triviaQuestions) {
+            //add the correct answer with the incorrect answers to the same array and shuffle the order of the array
             for (let item of this.state.triviaQuestions) {
                 item["selections"] = [...item.incorrect, item.correct].map((a) => ({sort: Math.random(), value: a}))
                 .sort((a, b) => a.sort - b.sort)
@@ -36,7 +37,7 @@ class Home extends React.Component {
           this.setState({userName: this.props.location.state.userName})
         } 
     }
-
+    //increment the correct count if the selected option is the correct answer
     selectAnswer = (selection, question) => {
         this.setState({selectedAnswer: selection}, () => {
             if (question.correct === selection) {
@@ -44,22 +45,28 @@ class Home extends React.Component {
             }
         })
     }
-
+    //proceed to the next question
     proceed = () => {
         this.setState(prevState => ({
             questionIndex: prevState.questionIndex + 1,
             selectedAnswer: null,
         }))
     }
-
+    //randomize a new set of trivia questions and randomize the order of the multiple choice options
     playAgain = () => {
         this.setState(prevState => ({
             personalBest: prevState.personalBest > prevState.correct ? prevState.personalBest : prevState.correct,
-            triviaQuestions: prevState.triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
+            triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
             .sort((a, b) => a.sort - b.sort)
             .map((a) => a.value).slice(0, 10),
             ...initState,
-        })) 
+        }), () => {
+            for (let item of this.state.triviaQuestions) {
+                item["selections"] = [...item.incorrect, item.correct].map((a) => ({sort: Math.random(), value: a}))
+                .sort((a, b) => a.sort - b.sort)
+                .map((a) => a.value)
+            }
+        }) 
     }
 
     render() {
