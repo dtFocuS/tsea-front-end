@@ -11,7 +11,7 @@ The goal is to create an trivia application that displays questions with multipl
 - All questions are multiple-choice questions
 - The score does not need to update in real time
 - Results can update on form submit, button click, or any interaction you choose
-
+- Trivia data such as the questions, correct and incorrect answers is provided in a JSON file
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -19,7 +19,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+### Accptance Criteria
+- A user can view questions.
+- Questions with their multiple choice options much be displayed one at a time.
+- Questions should not repeat in a round.
+- A user can select only 1 answer out of the 4 possible answers.
+- The correct answer must be revealed after a user has submitted their answer
+- A user can see the score they received at the end of the round.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
