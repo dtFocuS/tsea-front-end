@@ -1,10 +1,10 @@
 # Trivia Training App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a trivia training web application for the Code Challenge project for the Software Engeineer Apprenticeship program at Tandem. 
 
-## Available Scripts
+## Goal
 
-In the project directory, you can run:
+The goal is to create an trivia application that displays questions with multiple-choice answers to choose from.
 
 ### `npm start`
 
