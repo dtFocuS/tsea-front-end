@@ -28,7 +28,7 @@ The goal is to create a trivia application that displays questions with multiple
 4. Type in npm start in your terminal to run the app.
 
 ### How to play
-Once the app is opened in the browser, enter a user name on the landing page to proceed to the home page. When you reach home page, you will see a welcome message on top with your username. Underneath the message is your score out of 10. The center part is the main game with the question number, question description and the multiple choice options to choose from. 
+Once the app is opened in the browser, be sure to enter a username on the landing page to proceed to the home page. When you reach home page, you will see a welcome message on top with your username. Underneath the message is your score out of 10. The center part is the main game with the question number, question description and the multiple choice options to choose from. 
 
 Read the question and pick the right answer by clicking on one of the options. If you choose the right answer, the background of the option you choose will turn green. If the answer is incorrect, the background will turn red. The score up top will update in real time based on the number of right answers you have chosen. Once you have finished the round by answering all 10 questions, the final result will display in the end by showing you the number of correct answers you have chosen as well as your personal best score so far. If you wish to keep playing, simply click on the play again button to play a new round to try to beat your best score. The personal best score is stored in the react state so if you happen to refresh the page, the personal best score will be resetted to zero. 
 
