@@ -6,7 +6,12 @@ This is a trivia training web application for the Code Challenge project for the
 
 The goal is to create an trivia application that displays questions with multiple-choice answers to choose from.
 
-### `npm start`
+### Assumptions
+- A round of trivia has 10 questions
+- All questions are multiple-choice questions
+- The score does not need to update in real time
+- Results can update on form submit, button click, or any interaction you choose
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
