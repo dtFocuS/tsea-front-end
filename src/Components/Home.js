@@ -1,22 +1,38 @@
 import React from "react";
 import triviaQuestions from "../triviaQuestions.json";
-import { Card, Button, Radio } from "antd";
 import SelectionItem from "./SelectionItem";
 import ScoreBoard from "./ScoreBoard";
+
+const initState = {
+    // triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
+    // .sort((a, b) => a.sort - b.sort)
+    // .map((a) => a.value).slice(0, 10),
+    score: 0,
+    selectedAnswer: null,
+    questionIndex: 0,
+    correct: 0,
+}
 
 class Home extends React.Component {
     
     constructor() {
         super();
+        // this.state={
+        //     triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
+        //     .sort((a, b) => a.sort - b.sort)
+        //     .map((a) => a.value),
+        //     score: 0,
+        //     selectedAnswer: null,
+        //     questionIndex: 0,
+        //     correct: 0,
+        //     incorrect: 0,
+        // }
         this.state={
+            ...initState,
             triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
             .sort((a, b) => a.sort - b.sort)
-            .map((a) => a.value),
-            score: 0,
-            selectedAnswer: null,
-            questionIndex: 0,
-            correct: 0,
-            incorrect: 0,
+            .map((a) => a.value).slice(0, 10),
+            personalBest: 0,
         }
     }
 
@@ -58,40 +74,52 @@ class Home extends React.Component {
         // }
     }
 
+    playAgain = () => {
+        this.setState(prevState => ({
+            personalBest: prevState.personalBest > prevState.correct ? prevState.personalBest : prevState.correct,
+            triviaQuestions: prevState.triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value).slice(0, 10),
+            ...initState,
+        })) 
+    }
+
     render() {
         return(
             <div>
-                <h1>Welcome, Challenger {this.state.userName}</h1>
-                <div >
+                <h1 style={{color: "white", marginTop: "70px"}}>Welcome, Challenger {this.state.userName}</h1>
+                <div style={{color: "white"}}>
                     <h3>{this.state.correct} / {this.state.triviaQuestions.length}</h3>
                 </div>
                 
                 <div style={{
-                        background: "#e8e7e1", height: "750px", width: "700px", margin: "0 auto",
-                        borderRadius: "20px"
+                        background: "rgba(232, 231, 225, 0.5)", height: "700px", width: "700px", margin: "0 auto",
+                        borderRadius: "20px", color: "white",
                     }}
                 >
                     {this.state.triviaQuestions.map( (question, index)  => {
                         if (this.state.questionIndex === index) {
-                            return <div key={index} style={{paddingTop: "20px"}}> 
+                            return <div key={index} style={{paddingTop: "50px"}}> 
                                     <h3>Question {this.state.questionIndex + 1}</h3>
                                     <h3>{question.question}</h3>
-                                    {/* <Radio.Group onChange={this.selectAnswer} value={this.state.selectedAnswer}> */}
                                     <div style={{paddingTop: "20px"}}>
                                         {question.selections ? question.selections.map((selection, index) => {
                                             return <SelectionItem key={index} selection={selection} correctAnswer={selection === question.correct} selectedAnswer={this.state.selectedAnswer} selectAnswer={this.selectAnswer} question={question}/>
                                         }) : null}
                                     </div>
-                                    
-        
-                                    {/* </Radio.Group> */}
-                                    {/* <Button onClick={() => this.handleSubmit(question)}>Submit Answer</Button> */}
-                                    {this.state.selectedAnswer ? <div onClick={this.proceed} style={{borderRadius: "25px", background: "white", width: "200px", margin: "0 auto", height: "45px", fontWeight: "bold", position: "relative", cursor: "pointer"}}><div style={{margin: "0", position: "absolute", top: "50%", left: "50%",}} className="center-label">Next</div></div> : null}
+                                    {this.state.selectedAnswer ? 
+                                        <div onClick={this.proceed} style={{borderRadius: "25px", background: "white", width: "200px", margin: "0 auto", height: "45px", fontWeight: "bold", position: "relative", cursor: "pointer"}}>
+                                            <div style={{margin: "0", position: "absolute", top: "50%", left: "50%", color: "rgb(2,0,36)"}} className="center-label">Next</div>
+                                        </div> 
+                                        : 
+                                        null
+                                    }
                                 </div>
                         } else {
-                            return null
+                            return null;
                         }
                     })}
+                    {this.state.questionIndex === this.state.triviaQuestions.length ? <ScoreBoard correct={this.state.correct} playAgain={this.playAgain} triviaQuestions={this.state.triviaQuestions} userName={this.props.userName} personalBest={this.state.personalBest}/> : null}
 
                 </div>
             </div>

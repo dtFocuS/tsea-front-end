@@ -34,14 +34,17 @@
 }
 
 .right-selection {
-  background: green;
+  background: #53e75d;
 }
 
 .wrong-selection {
-  background: red;
+  background: #fe587a;
 }
 
 .center-label {
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
