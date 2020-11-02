@@ -31,9 +31,10 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### Instruction to run the app
-1. Clone this git repo to your local machine.
-2. Cd into the directory and run npm install.
-3. Type in npm start in your terminal to run the app.
+1. Download and install Node.js and npm.
+2. Clone this git repo to your local machine.
+3. Cd into the directory and run npm install.
+4. Type in npm start in your terminal to run the app.
 
 ### `npm run eject`
 
