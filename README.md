@@ -33,7 +33,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### Instruction to run the app
 1. Clone this git repo to your local machine.
 2. Cd into the directory and run npm install.
-3. Run npm start in your terminal to run the app.
+3. Type in npm start in your terminal to run the app.
 
 ### `npm run eject`
 
