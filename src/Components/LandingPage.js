@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-// import { Input } from "antd";
 
 class LandingPage extends React.Component {
 
@@ -19,10 +18,8 @@ class LandingPage extends React.Component {
         if (this.state.userName.replace(/\s+/g, '') !== "") {
             this.props.history.push("/home", {
                 userName: this.state.userName
-                // tagNames,
               });
-        }
-        
+        } 
     }
 
     render() {
@@ -32,7 +29,6 @@ class LandingPage extends React.Component {
                     <h1>Trivia Challenge</h1>
                     <h4>Enter your username to continue</h4>
                     <input style={{borderRadius: "20px", width: "250px", height: "30px", textAlign: "center", border: "none", outline: "0", fontSize: "20px"}} onChange={this.handleChange}></input>
-                    {/* <Input onChange={this.handleChange}></Input> */}
                     <div onClick={this.handleEnter} style={{width: "200px", height: "35px", border: "0px solid black", borderRadius: "20px",  background: "linear-gradient(to left, #ff9999 0%, #ff99cc 100%)", color: "#fff", margin:"20px auto", fontSize: "25px", cursor: "pointer", }}>Enter</div>
                 </div>
             </div>

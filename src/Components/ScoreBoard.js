@@ -5,7 +5,6 @@ class ScoreBoard extends React.Component {
 
   render() {
     return(
-
       <div style={{paddingTop: "50px"}}>
         <h1>You got {this.props.correct} out of {this.props.triviaQuestions.length} questions correct!</h1>
         <div style={{paddingTop: "10px"}}>
@@ -18,8 +17,6 @@ class ScoreBoard extends React.Component {
 
     )
   }
-
-
 }
 
 export default ScoreBoard;

@@ -4,9 +4,6 @@ import SelectionItem from "./SelectionItem";
 import ScoreBoard from "./ScoreBoard";
 
 const initState = {
-    // triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
-    // .sort((a, b) => a.sort - b.sort)
-    // .map((a) => a.value).slice(0, 10),
     score: 0,
     selectedAnswer: null,
     questionIndex: 0,
@@ -17,16 +14,6 @@ class Home extends React.Component {
     
     constructor() {
         super();
-        // this.state={
-        //     triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
-        //     .sort((a, b) => a.sort - b.sort)
-        //     .map((a) => a.value),
-        //     score: 0,
-        //     selectedAnswer: null,
-        //     questionIndex: 0,
-        //     correct: 0,
-        //     incorrect: 0,
-        // }
         this.state={
             ...initState,
             triviaQuestions: triviaQuestions.map((a) => ({sort: Math.random(), value: a}))
@@ -43,13 +30,11 @@ class Home extends React.Component {
                 .sort((a, b) => a.sort - b.sort)
                 .map((a) => a.value)
             }
-            console.log(this.state.triviaQuestions)
         }
         
         if (this.props.location.state) {
           this.setState({userName: this.props.location.state.userName})
-        }
-        
+        } 
     }
 
     selectAnswer = (selection, question) => {
@@ -58,8 +43,6 @@ class Home extends React.Component {
                 this.setState(prevState => ({correct: prevState.correct + 1}));
             }
         })
-        
-        // this.setState({selectedAnswer: value})
     }
 
     proceed = () => {
@@ -67,11 +50,6 @@ class Home extends React.Component {
             questionIndex: prevState.questionIndex + 1,
             selectedAnswer: null,
         }))
-        // if (question.correct === this.state.selectedAnswer) {
-        //     this.setState(prevState => ({correct: prevState.correct + 1}));
-        // } else {
-        //     this.setState(prevState => ({incorrect: prevState.incorrect + 1}));
-        // }
     }
 
     playAgain = () => {
@@ -87,7 +65,7 @@ class Home extends React.Component {
     render() {
         return(
             <div>
-                <h1 style={{color: "white", marginTop: "70px"}}>Welcome, Challenger {this.state.userName}</h1>
+                <h1 style={{color: "white", marginTop: "70px"}}>Welcome! Challenger {this.state.userName}</h1>
                 <div style={{color: "white"}}>
                     <h3>{this.state.correct} / {this.state.triviaQuestions.length}</h3>
                 </div>
@@ -119,8 +97,11 @@ class Home extends React.Component {
                             return null;
                         }
                     })}
-                    {this.state.questionIndex === this.state.triviaQuestions.length ? <ScoreBoard correct={this.state.correct} playAgain={this.playAgain} triviaQuestions={this.state.triviaQuestions} userName={this.props.userName} personalBest={this.state.personalBest}/> : null}
-
+                    {this.state.questionIndex === this.state.triviaQuestions.length ? 
+                        <ScoreBoard correct={this.state.correct} playAgain={this.playAgain} triviaQuestions={this.state.triviaQuestions} userName={this.props.userName} personalBest={this.state.personalBest}/> 
+                        : 
+                        null
+                    }
                 </div>
             </div>
         )
